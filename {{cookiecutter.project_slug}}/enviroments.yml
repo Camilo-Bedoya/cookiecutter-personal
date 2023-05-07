@@ -1,0 +1,26 @@
+# conda env create --file enviroment.yml
+name: {{cookiecutter.project_slug}}
+channels:
+ - anaconda
+ - conda-forge
+ - defaults
+dependencies:
+ {% if cookiecutter.project_packages == "ALL" -%}
+ - pandas=1.4.4
+ - numpy=1.21.5
+ - xlswriter=3.0.3
+ - matplotlib=3.5.2
+ - seaborn=0.11.2
+ - tqdm=4.61.1
+ - scipy=1.9.1
+ - presto-python-client=0.8.3
+ - plyer=2.1.0
+ - python={{ cookiecutter.python_version }}
+ {%endif -%}
+
+ {% if cookiecutter.project_packages == "Minimal" -%}
+ - pandas=1.4.4
+ - numpy=1.21.5
+ - python={{ cookiecutter.python_version }}
+ {%endif -%}
+ 
